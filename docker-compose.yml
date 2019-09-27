@@ -43,13 +43,23 @@ services:
     build: zuul-api-gateway
     ports:
         - 8765:8765
-#    depends_on:
-#      - eureka-naming-server
-#    environment:
-#      - EUREKA_SERVER_ADDRESS=eureka-naming-server
-#    links:
-#      - eureka-naming-server
-#
+    depends_on:
+      - eureka-naming-server
+    environment:
+      - EUREKA_SERVER_ADDRESS=eureka-naming-server
+    links:
+      - eureka-naming-server
+
+  command-registry-ui:
+    image: command-registry-ui
+    build: command-registry-ui
+    ports:
+      - 4200:4200
+    container_name: angularcontainer  # Container name
+    volumes: # Volume binding
+      - $HOME/workspace/command-registry-ui:/usr/src/app
+
+
   spring-boot-command-framework:
     image: command-framework
     build: command-framework
@@ -78,13 +88,13 @@ services:
       - 27017:27017
     volumes:
       - $HOME/workspace/productdb/command:/data/db
-#
-#  angular-service: # The name of the service
-#    container_name: angularcontainer  # Container name
-#    build: "./command-registry-ui" # Location of our Dockerfile
-#    volumes: # Volume binding
-#      - $HOME/workspace/command-registry-ui:/usr/src/app
-#    ports:
-#      - 4200:4200 # Port mapping
-#    command: "npm install"
-#
+##
+##  angular-service: # The name of the service
+##    container_name: angularcontainer  # Container name
+##    build: "./command-registry-ui" # Location of our Dockerfile
+##    volumes: # Volume binding
+##      - $HOME/workspace/command-registry-ui:/usr/src/app
+##    ports:
+##      - 4200:4200 # Port mapping
+##    command: "npm install"
+##
