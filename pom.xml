@@ -112,8 +112,8 @@
     
     
     <maven.compiler.target>1.8</maven.compiler.target>
-                          
-  
+
+    <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
   
   
   
