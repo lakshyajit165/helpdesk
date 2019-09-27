@@ -30,10 +30,10 @@ public class BasicCommands {
 
     @GetMapping
     public ResponseEntity<HashMap<String,Object>> getBasicCommands(){
-        List<String> basicCommandsList = new ArrayList<>();
+        HashMap<String,String> basicCommandsList = new HashMap<>();
         Map<RequestMappingInfo, HandlerMethod> listOfCommands = this.requestMappingHandlerMapping.getHandlerMethods();
         listOfCommands.forEach((x,y) -> {
-            basicCommandsList.add(x+"/n"+y+"/n");
+            basicCommandsList.put(x.toString(),y.toString());
         } );
         responseObject = new HashMap<>();
         responseObject.put("result",basicCommandsList);

@@ -1,31 +1,24 @@
-package com.stackroute.helpdesk.commandDesignFramework.invoker;
+package com.stackroute.helpdesk.commandRegistry.invoker;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @RestController
 public class Invoker {
 
     static String paramString = "";
 
-    @Autowired
+//    @Autowired
     private RestTemplate restTemplate;
 
     @RequestMapping("/execute/{commandString}")
     public <T> T execute(@PathVariable("commandString") String commandString) {
+        restTemplate = new RestTemplate();
         String[] command_string = commandString.split(" ");
         String command = command_string[0];
         String parameters = "";
@@ -34,7 +27,7 @@ public class Invoker {
 
         String commandexec = "http://localhost:8080/"+command+"?"+parameters;
 //        String commandexec = "http://spring-boot-command-framework:8080/"+command+"?"+parameters;
-        return (T)restTemplate.getForObject(commandexec,String.class);
+        return (T)restTemplate.getForEntity(commandexec,Object.class);
     }
 
     public String createParameter(String parameterList){

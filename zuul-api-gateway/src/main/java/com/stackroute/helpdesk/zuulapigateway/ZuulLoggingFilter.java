@@ -1,4 +1,4 @@
-package com.stackroute.helpdesk;
+package com.stackroute.helpdesk.zuulapigateway;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
