@@ -68,6 +68,14 @@ services:
     depends_on:
       - zuul-api-gateway
 
+  spring-boot-optimus:
+    image: optimus
+    build: optimus
+    ports:
+      - 8083:8083
+    depends_on:
+      - zuul-api-gateway
+
   spring-boot-command-registry:
       image: command-registry
       build: command-registry
