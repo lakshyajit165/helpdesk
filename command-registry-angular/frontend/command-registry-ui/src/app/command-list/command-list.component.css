@@ -1,66 +1,42 @@
 .search {
-    height:40px;
-    width: 60%;
-    text-align: center; 
-    border:2px solid black;
+    height: 30px;
+    width: 40%;
+    text-align: center;
+    border: 2px solid black;
     margin-top: 2%;
     font-size: 20px;
+}
 
-
-  }
-
-  .inputcont
-  {
+.inputcont {
     text-align: center;
-    margin:0 auto;
-  }
-  
-  .mat-list-icon {
+    margin: 0 auto;
+}
+
+.active-status {
     color: rgba(18, 129, 3, 0.54);
-  }
+}
 
-  .list-page-container {
-    margin:0 auto;
-    margin-bottom: 5%;
-    width: 80% !important;
-    background: #f2f2f2;
-    margin-top: 1%;
-    border-radius: 10px;
-  padding: 10px;
-  box-shadow: 5px 10px #888888;
+.inactive-status {
+    color: rgba(123, 128, 123, 0.54);
+}
 
-  }
-  
-  .plus-button {
+.plus-button {
     font-size: 50px;
     position: fixed;
-    right: 5%;
+    right: 10%;
     text-decoration: none;
     bottom: 15%;
-  }
+}
 
-  .command-name {
+.command-name {
     font-size: 25px !important;
-  }
-  .list-title {
-    font-size: 25px;
-  }
-  .command-desc {
-    font-size: 15px !important;
-  }
-  .mat-list-item {
-    border:2px solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-  }
-  .mat-list {
-    margin:0 auto;
-    width: 80% ;
-    
-  }
+}
 
-  pagination-controls
-  {
+.mat-list {
+    margin: 0 auto;
+    width: 80%;
+}
+
+pagination-controls {
     text-align: center;
-  }
-
+}

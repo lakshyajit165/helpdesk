@@ -8,7 +8,9 @@ export interface ICommand {
     created_by: string;
     usage: string;
     status: string;
-    parametersList: [{
+
+
+    parameters: [{
         parameterName: string;
         required: string;
         default_value: string;
