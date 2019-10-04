@@ -1,6 +1,7 @@
 package com.stackroute.helpdesk.commandregistry.invoker;
 
 
+import com.stackroute.helpdesk.commandregistry.invoker.model.Context;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,10 +50,13 @@ public class InvokerTest {
         responseObject.put("message","success");
         responseObject.put("error","false");
         Mockito
-                .when(restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class))
-                .thenReturn(new ResponseEntity<HashMap<String,Object>>(responseObject, HttpStatus.OK));
+//                .when(restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class))
+                .when(restTemplate.getForObject("http://localhost:8080/information", Object.class))
 
-        Object result = restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class);
+                .thenReturn(new ResponseEntity<HashMap<String,Object>>(responseObject, HttpStatus.OK));
+        ResponseEntity<Object> result = restTemplate.getForEntity("http://localhost:8080/information", Object.class);
+        HashMap<String,Object> responseEntityBody = (HashMap<String, Object>) result.getBody();
+        responseObject.put("context",new Context());
         String expected = result.toString().split(",")[1];
         assertEquals(expected.substring(8),"generic helpdesk");
     }

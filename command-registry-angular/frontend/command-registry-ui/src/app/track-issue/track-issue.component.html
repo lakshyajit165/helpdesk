@@ -1,0 +1,63 @@
+<mat-accordion class="filter-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Filter
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input matInput placeholder="search intent" [(ngModel)]="searchIntent">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Type of issue</mat-label>
+            <mat-select [(value)]="selectedIssueType">
+                <mat-option>None</mat-option>
+                <mat-option value="No Command">No Command</mat-option>
+                <mat-option value="No Intent">No Intent</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Apply</button>
+        </mat-action-row> -->
+    </mat-expansion-panel>
+</mat-accordion>
+
+<!-- List of issues -->
+<div class="list-page-container">
+
+    <!-- <mat-list class="mat-list">
+        <h2 mat-subheader>List of issues</h2>
+        <mat-list-item *ngFor="let command of commands | commandFilter : searchTerm | paginate: { itemsPerPage: 10, currentPage: p }">
+            <mat-icon mat-list-icon *ngIf="command.status==='active'" class="active-status">lens</mat-icon>
+            <mat-icon mat-list-icon *ngIf="command.status==='inactive'" class="inactive-status">lens</mat-icon>
+            <h3 mat-line>{{command.name}}</h3>
+            <p mat-line> {{command.desc}} </p>
+        </mat-list-item>
+    </mat-list> -->
+
+    <mat-list>
+        <h3 mat-subheader>List of Issues</h3>
+        <div *ngFor="let issue of report | issueFilter : selectedIssueType">
+            <div *ngFor="let intent of issue.intent | intentFilter : searchIntent ">
+                <div *ngFor="let query of intent.queries">
+                    <mat-list-item>
+                        <h4 mat-line>Query:{{query.queryName}} </h4>
+                        <p mat-line> Date:{{query.date}} </p>
+                        <p>intent:{{intent.name}} </p>
+                        <h2>{{issue.type}}</h2>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </div>
+    </mat-list>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <!-- <mat-paginator showFirstLastButtons [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator> -->
+    <!-- <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center" fxLayout.gt-xs="row">
+         <mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" [length]="length" fxFlex=80%></mat-paginator>
+      </div> -->
+</div>

@@ -10,11 +10,13 @@ services:
     build: congif-server
     ports:
       - 8089:8089
+
   eureka-naming-server:
     image: eureka-naming-server
     build: eureka-naming-server
     ports:
       - 8761:8761
+
   zuul-api-gateway:
     image: zuul-api-gateway
     build: zuul-api-gateway
@@ -26,6 +28,8 @@ services:
   #      - EUREKA_SERVER_ADDRESS=eureka-naming-server
   #    links:
   #      - eureka-naming-server
+
+
   spring-boot-command-framework:
     image: command-framework
     build: command-framework
@@ -33,16 +37,7 @@ services:
       - 8080:8080
     depends_on:
       - eureka-naming-server
-  spring-boot-command-registry:
-    image: helpdesk_project_spring-boot-command-framework
-    build: command-registry
-    ports:
-      - 8082:8082
-    depends_on:
-      - mongo-command
-      - eureka-naming-server
-    environment:
-      mongo_url: mongodb://mongo-command/command
+
   command-registry-angular:
     image: command-registry-angular
     build: command-registry-angular
@@ -50,6 +45,20 @@ services:
       - 8083:8083
     depends_on:
       - eureka-naming-server
+
+
+  spring-boot-command-registry:
+      image: helpdesk_project_spring-boot-command-framework
+      build: command-registry
+      ports:
+        - 8082:8082
+      depends_on:
+        - mongo-command
+        - eureka-naming-server
+      environment:
+        mongo_url: mongodb://mongo-command/command
+
+
   mongo-command:
     image: mongo:latest
     container_name: mongo

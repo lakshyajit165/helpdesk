@@ -1,0 +1,59 @@
+{
+    "result": [{
+            "type": "No Command",
+            "intent": [{
+                    "name": "book",
+                    "queries": [{
+                            "queryName": "not able to book",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        },
+                        {
+                            "queryName": "not able to access booking",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        }
+                    ]
+                },
+                {
+                    "name": "order",
+                    "queries": [{
+                            "queryName": "not able to order",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        },
+                        {
+                            "queryName": "not able to track ordered item",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "no intent",
+            "intent": [{
+                    "name": "book",
+                    "queries": [{
+                            "queryName": "not able to book",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        },
+                        {
+                            "queryName": "not able to access",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        }
+                    ]
+                },
+                {
+                    "name": "order",
+                    "queries": [{
+                            "queryName": "not able to book",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        },
+                        {
+                            "queryName": "not able to access",
+                            "date": "Jun 15, 2015, 9:03:01 AM"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+<div class="list-page-container">
+
+    <div class="inputcont">
+        <input class="search" matInput value="" placeholder="Search Command" [(ngModel)]="searchTerm">
+    </div>
+    <mat-list class="mat-list">
+        <h2 mat-subheader>List of Commands</h2>
+        <mat-list-item (click)="onClickList(command)" *ngFor="let command of commands | commandFilter : searchTerm | paginate: { itemsPerPage: 10, currentPage: p }">
+            <!-- <mat-icon mat-list-icon>lens</mat-icon> -->
+            <mat-icon mat-list-icon *ngIf="command.status==='active'" class="active-status">lens</mat-icon>
+            <mat-icon mat-list-icon *ngIf="command.status==='inactive'" class="inactive-status">lens</mat-icon>
+            <h3 mat-line>{{command.name}}</h3>
+            <p mat-line> {{command.desc}} </p>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+
+    </mat-list>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+    <mat-icon class="plus-button">
+        <a routerLink="/form">
+            add_circle_outline
+        </a>
+    </mat-icon>
+
+</div>

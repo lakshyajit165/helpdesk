@@ -1,0 +1,42 @@
+.search {
+    height: 30px;
+    width: 40%;
+    text-align: center;
+    border: 2px solid black;
+    margin-top: 2%;
+    font-size: 20px;
+}
+
+.inputcont {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.active-status {
+    color: rgba(18, 129, 3, 0.54);
+}
+
+.inactive-status {
+    color: rgba(123, 128, 123, 0.54);
+}
+
+.plus-button {
+    font-size: 50px;
+    position: fixed;
+    right: 10%;
+    text-decoration: none;
+    bottom: 15%;
+}
+
+.command-name {
+    font-size: 25px !important;
+}
+
+.mat-list {
+    margin: 0 auto;
+    width: 80%;
+}
+
+pagination-controls {
+    text-align: center;
+}
