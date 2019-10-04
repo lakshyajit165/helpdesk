@@ -15,7 +15,7 @@ import { OpenticketsComponent } from './opentickets/opentickets.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PerformanceComponent } from './performance/performance.component';
 import { TicketdetailsComponent } from './ticketdetails/ticketdetails.component';
-import { TicketdetailcardComponent } from './ticketdetailcard/ticketdetailcard.component';
+import { TicketdetailcardComponent, DialogOverviewExampleDialog } from './ticketdetailcard/ticketdetailcard.component';
 import { ChatComponent } from './chat/chat.component';
 import { PagenotfoundComponent } from '../app/pagenotfound/pagenotfound.component';
 import { FilterPipe } from '../app/filters/filter.pipe';
@@ -31,8 +31,10 @@ import { FilterPipe } from '../app/filters/filter.pipe';
     TicketdetailcardComponent,
     ChatComponent,
     PagenotfoundComponent,
-    FilterPipe
+    FilterPipe,
+    DialogOverviewExampleDialog
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   imports: [
     BrowserModule,
     AppRoutingModule,

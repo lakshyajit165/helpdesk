@@ -15,15 +15,15 @@
         <form class="example-form">
             
             <mat-form-field class="example-full-width" appearance="outline">
-                <input matInput placeholder="Execute a command">
+                <input matInput placeholder="Execute a command" [(ngModel)]="command" name="commandname">
             </mat-form-field>
-            <button mat-raised-button color="primary" class="command-button">Execute</button>
+            <button mat-raised-button color="primary" class="command-button" (click)="executeCommand(command)">Execute</button>
         </form>
         </div>
     </mat-card-content>
     <mat-card-actions>
         <div class="wrapper1">
-            <button mat-stroked-button color="primary">Report User</button>
+            <button mat-stroked-button color="primary" (click)="openDialog()">Report User</button>
             <button mat-stroked-button color="primary" (click)="generateCallbackMail('Callback initiated!', 'Dismiss')">Callback</button>
             <button mat-stroked-button color="primary" (click)="resolveTicket('Ticket Resolved!', 'Dismiss')">Resolved</button>
         </div>

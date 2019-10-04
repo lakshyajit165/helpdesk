@@ -14,20 +14,20 @@ export class TicketService {
 
   getOpenTickets(): Observable<object> {
    // return this.http.get<Map<string, object>>('http://localhost:8765/ticketservice/tickets/open');
-   return this.http.get<object>('http://localhost:8765/ticket-service/tickets/open');
+   return this.http.get<object>('http://localhost:8765/ticketservice/tickets/open');
   }
 
   changeTicketStatusToEngaged(ticket: Ticket): Observable<object> {
-    // console.log('inside ticket service');
-    return this.http.patch<object>('http://localhost:8765/ticket-service/tickets/status/engaged', ticket);
+    // console.log('inside ticketservice');
+    return this.http.patch<object>('http://localhost:8765/ticketservice/tickets/status/engaged', ticket);
   }
 
   resolveTicket(ticket: Ticket): Observable<object> {
-    return this.http.patch<object>('http://localhost:8765/ticket-service/tickets/status/resolved', ticket);
+    return this.http.patch<object>('http://localhost:8765/ticketservice/tickets/status/resolved', ticket);
   }
 
   callbackMail(ticket: Ticket): Observable<object> {
-    return this.http.patch<object>('http://localhost:8765/ticket-service/tickets/status/callbackmail', ticket);
+    return this.http.patch<object>('http://localhost:8765/ticketservice/tickets/status/callbackmail', ticket);
 
   }
 

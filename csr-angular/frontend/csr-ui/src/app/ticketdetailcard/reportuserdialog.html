@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Report User</h1>
+<div mat-dialog-content>
+  <p>Why are you reporting this user?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="reportReason">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="reportReason" cdkFocusInitial>Submit</button>
+</div>

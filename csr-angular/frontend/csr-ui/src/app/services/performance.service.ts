@@ -11,9 +11,9 @@ export class PerformanceService {
   ) { }
 
   getDetailsTaken(): Observable<object> {
-    return  this.http.get<object>('http://localhost:8080/tickets/csr/taken');
+    return  this.http.get<object>('http://localhost:8765/ticketservice/tickets/csr/taken');
    }
    getDetailsResolved(): Observable<object> {
-    return  this.http.get<object>('http://localhost:8080/tickets/csr/resolved');
+    return  this.http.get<object>('http://localhost:8765/ticketservice/tickets/csr/resolved');
    }
 }

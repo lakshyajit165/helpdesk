@@ -375,6 +375,17 @@ module.exports = "<!-- <p>performance works!</p> -->\n<div class=\"performance\"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/ticketdetailcard/reportuserdialog.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/ticketdetailcard/reportuserdialog.html ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1 mat-dialog-title>Report User</h1>\n<div mat-dialog-content>\n  <p>Why are you reporting this user?</p>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"reportReason\">\n  </mat-form-field>\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Cancel</button>\n  <button mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Submit</button>\n</div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/ticketdetailcard/ticketdetailcard.component.html":
 /*!********************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/ticketdetailcard/ticketdetailcard.component.html ***!
@@ -382,7 +393,7 @@ module.exports = "<!-- <p>performance works!</p> -->\n<div class=\"performance\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Callback initiated!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
+module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\" [(ngModel)]=\"command\" name=\"commandname\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\" (click)=\"executeCommand(command)\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\" (click)=\"openDialog()\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Callback initiated!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
 
 /***/ }),
 
@@ -561,8 +572,10 @@ var AppModule = /** @class */ (function () {
                 _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_16__["TicketdetailcardComponent"],
                 _chat_chat_component__WEBPACK_IMPORTED_MODULE_17__["ChatComponent"],
                 _app_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_18__["PagenotfoundComponent"],
-                _app_filters_filter_pipe__WEBPACK_IMPORTED_MODULE_19__["FilterPipe"]
+                _app_filters_filter_pipe__WEBPACK_IMPORTED_MODULE_19__["FilterPipe"],
+                _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_16__["DialogOverviewExampleDialog"]
             ],
+            entryComponents: [_ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_16__["DialogOverviewExampleDialog"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
@@ -723,6 +736,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var materialComponents = [
     _angular_material_list__WEBPACK_IMPORTED_MODULE_2__["MatListModule"],
     _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_3__["MatToolbarModule"],
@@ -734,7 +748,8 @@ var materialComponents = [
     _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardModule"],
     _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"],
     _angular_material_input__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
-    _angular_material__WEBPACK_IMPORTED_MODULE_12__["MatSnackBarModule"]
+    _angular_material__WEBPACK_IMPORTED_MODULE_12__["MatSnackBarModule"],
+    _angular_material__WEBPACK_IMPORTED_MODULE_12__["MatDialogModule"]
 ];
 var MaterialModule = /** @class */ (function () {
     function MaterialModule() {
@@ -1072,10 +1087,10 @@ var PerformanceService = /** @class */ (function () {
         this.http = http;
     }
     PerformanceService.prototype.getDetailsTaken = function () {
-        return this.http.get('http://localhost:8080/tickets/csr/taken');
+        return this.http.get('http://localhost:8765/ticketservice/tickets/csr/taken');
     };
     PerformanceService.prototype.getDetailsResolved = function () {
-        return this.http.get('http://localhost:8080/tickets/csr/resolved');
+        return this.http.get('http://localhost:8765/ticketservice/tickets/csr/resolved');
     };
     PerformanceService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -1114,23 +1129,17 @@ var TicketService = /** @class */ (function () {
     }
     TicketService.prototype.getOpenTickets = function () {
         // return this.http.get<Map<string, object>>('http://localhost:8765/ticketservice/tickets/open');
-        return this.http.get('http://localhost:8080/tickets/open');
+        return this.http.get('http://localhost:8765/ticketservice/tickets/open');
     };
     TicketService.prototype.changeTicketStatusToEngaged = function (ticket) {
-        // console.log('inside ticket service');
-        return this.http.patch('http://localhost:8080/tickets/status/engage', ticket);
+        // console.log('inside ticketservice');
+        return this.http.patch('http://localhost:8765/ticketservice/tickets/status/engaged', ticket);
     };
     TicketService.prototype.resolveTicket = function (ticket) {
-        return this.http.patch('http://localhost:8080/tickets/status/resolved', ticket);
+        return this.http.patch('http://localhost:8765/ticketservice/tickets/status/resolved', ticket);
     };
     TicketService.prototype.callbackMail = function (ticket) {
-        return this.http.patch('http://localhost:8080/tickets/status/callbackmail', ticket);
-    };
-    TicketService.prototype.getClosedTickets = function () {
-        return this.http.get('http://localhost:8080/tickets/close');
-    };
-    TicketService.prototype.getEngagedTickets = function () {
-        return this.http.get('http://localhost:8080/tickets/engaged');
+        return this.http.patch('http://localhost:8765/ticketservice/tickets/status/callbackmail', ticket);
     };
     TicketService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -1162,11 +1171,12 @@ module.exports = ".wrapper1{\n    display: grid;\n    grid-template-columns: rep
 /*!****************************************************************!*\
   !*** ./src/app/ticketdetailcard/ticketdetailcard.component.ts ***!
   \****************************************************************/
-/*! exports provided: TicketdetailcardComponent */
+/*! exports provided: DialogOverviewExampleDialog, TicketdetailcardComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogOverviewExampleDialog", function() { return DialogOverviewExampleDialog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TicketdetailcardComponent", function() { return TicketdetailcardComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
@@ -1174,18 +1184,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _services_ticket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/ticket.service */ "./src/app/services/ticket.service.ts");
 /* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
 
 
 
 
 
+
+
+var DialogOverviewExampleDialog = /** @class */ (function () {
+    function DialogOverviewExampleDialog(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    DialogOverviewExampleDialog.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    DialogOverviewExampleDialog.ctorParameters = function () { return [
+        { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MatDialogRef"] },
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MAT_DIALOG_DATA"],] }] }
+    ]; };
+    DialogOverviewExampleDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'dialog-overview-example-dialog',
+            template: __webpack_require__(/*! raw-loader!./reportuserdialog.html */ "./node_modules/raw-loader/index.js!./src/app/ticketdetailcard/reportuserdialog.html"),
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MAT_DIALOG_DATA"]))
+    ], DialogOverviewExampleDialog);
+    return DialogOverviewExampleDialog;
+}());
 
 var TicketdetailcardComponent = /** @class */ (function () {
-    function TicketdetailcardComponent(router, http, ticketService, snackbar) {
+    function TicketdetailcardComponent(router, http, ticketService, snackbar, dialog) {
         this.router = router;
         this.http = http;
         this.ticketService = ticketService;
         this.snackbar = snackbar;
+        this.dialog = dialog;
         this.stat = 'status';
         this.result = 'result';
         if (this.router.getCurrentNavigation().extras.state !== undefined) {
@@ -1195,6 +1230,16 @@ var TicketdetailcardComponent = /** @class */ (function () {
         }
     }
     TicketdetailcardComponent.prototype.ngOnInit = function () {
+    };
+    // Open the dialog box
+    TicketdetailcardComponent.prototype.openDialog = function () {
+        var dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+            width: '400px',
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            console.log('The dialog was closed');
+            console.log(result);
+        });
     };
     TicketdetailcardComponent.prototype.updateTicketStatusToEngaged = function (ticket) {
         this.ticketService.changeTicketStatusToEngaged(ticket).subscribe(function (res) {
@@ -1217,11 +1262,17 @@ var TicketdetailcardComponent = /** @class */ (function () {
             _this.router.navigate(['/home']);
         });
     };
+    TicketdetailcardComponent.prototype.executeCommand = function (command) {
+        this.http.post("http://localhost:8765/command-registry/api/v1/commandregistry/execute/" + command, { "csrUserId": "adawd" }).subscribe(function (res) {
+            console.log(res);
+        });
+    };
     TicketdetailcardComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
         { type: _services_ticket_service__WEBPACK_IMPORTED_MODULE_4__["TicketService"] },
-        { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] }
+        { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] },
+        { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MatDialog"] }
     ]; };
     TicketdetailcardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
