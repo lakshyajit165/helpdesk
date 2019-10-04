@@ -49,10 +49,12 @@ public class InvokerTest {
         responseObject.put("message","success");
         responseObject.put("error","false");
         Mockito
-                .when(restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class))
+//                .when(restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class))
+                .when(restTemplate.getForObject("http://localhost:8080/information", Object.class))
+
                 .thenReturn(new ResponseEntity<HashMap<String,Object>>(responseObject, HttpStatus.OK));
 
-        Object result = restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/information", Object.class);
+        Object result = restTemplate.getForObject("http://localhost:8080/information", Object.class);
         String expected = result.toString().split(",")[1];
         assertEquals(expected.substring(8),"generic helpdesk");
     }

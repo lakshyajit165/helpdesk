@@ -33,9 +33,6 @@ public class Invoker {
     @RequestMapping("/execute/{commandString}")
     public <T> T execute(@PathVariable("commandString") String commandString, @RequestBody Context context) {
         restTemplate = new RestTemplate();
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        HttpEntity<String> entity = new HttpEntity<String>(context.toString(),headers);
         String[] command_string = commandString.split(" ");
         String command = command_string[0];
         String parameters = "";
