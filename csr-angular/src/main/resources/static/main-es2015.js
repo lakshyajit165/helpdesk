@@ -349,7 +349,7 @@ module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-si
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <p>opentickets works!</p> -->\n\n    <section class=\"opentickets\">\n        <h1 class=\"display-4\" class=\"body-2 mat-display-1\" >List of open Tickets</h1>\n\n        <div *ngFor=\"let ticket of tickets\" class=\"mat-elevation-z2 wrapper\" >\n                \n                <div style=\"text-align: left\">\n                   \n                        <h2 class=\"mat-body-strong\">{{ ticket.description }}</h2>\n                    \n                </div>\n                <div >\n                    <h3 class=\"mat-body-strong\">{{ ticket.timeCreated | date }}</h3>\n                </div>\n               \n                <div >\n                    <mat-chip-list *ngFor=\"let tag of ticket.tags\" class=\"chips\">\n                        <mat-chip>{{ tag }}</mat-chip>\n                    </mat-chip-list>\n                </div>\n\n                 <div>  \n                    <button mat-stroked-button color=\"primary\" (click)=\"assignMeClicked(ticket)\">Assign Me</button>\n                </div>\n                \n                    \n                \n               \n            </div>\n        \n    </section>\n    "
+module.exports = "<!-- <p>opentickets works!</p> -->\n\n        <section class=\"opentickets\">\n        <h1 class=\"display-4\" class=\"body-2 mat-display-1\" >List of open Tickets</h1>  \n        \n        <form>\n        <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n        <input matInput [(ngModel)]=\"searchText\" id=\"search\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"search here........\">\n        </mat-form-field>\n        </form>\n        <div *ngFor=\"let ticket of tickets | filter : searchText\" class=\"mat-elevation-z2 wrapper\" >\n                \n        <div style=\"text-align: left\">\n                   \n        <h2 class=\"mat-body-strong\">{{ ticket.description }}</h2>\n                    \n        </div>\n        <div >\n        <h3 class=\"mat-body-strong\">{{ ticket.timeCreated | date }}</h3>\n        </div>\n               \n        <div >\n         <mat-chip-list *ngFor=\"let tag of ticket.tags\" class=\"chips\">\n         <mat-chip>{{ tag }}</mat-chip>\n        </mat-chip-list>\n        </div>\n\n        <div>  \n        <button mat-stroked-button color=\"primary\" (click)=\"assignMeClicked(ticket)\">Assign Me</button>\n        </div>\n                 \n       </div>\n        \n       </section>\n    "
 
 /***/ }),
 
@@ -360,7 +360,7 @@ module.exports = "<!-- <p>opentickets works!</p> -->\n\n    <section class=\"ope
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>pagenotfound works!</p>\n"
+module.exports = "<mat-card><mat-icon>error</mat-icon>404 PAGE NOT FOUND</mat-card>\n"
 
 /***/ }),
 
@@ -382,7 +382,7 @@ module.exports = "<!-- <p>performance works!</p> -->\n<div class=\"performance\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Ticket Resolved!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
+module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Callback initiated!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
 
 /***/ }),
 
@@ -512,14 +512,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
 /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
 /* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
-/* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./material/material.module */ "./src/app/material/material.module.ts");
-/* harmony import */ var _opentickets_opentickets_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./opentickets/opentickets.component */ "./src/app/opentickets/opentickets.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _performance_performance_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./performance/performance.component */ "./src/app/performance/performance.component.ts");
-/* harmony import */ var _ticketdetails_ticketdetails_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ticketdetails/ticketdetails.component */ "./src/app/ticketdetails/ticketdetails.component.ts");
-/* harmony import */ var _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ticketdetailcard/ticketdetailcard.component */ "./src/app/ticketdetailcard/ticketdetailcard.component.ts");
-/* harmony import */ var _chat_chat_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./chat/chat.component */ "./src/app/chat/chat.component.ts");
-/* harmony import */ var _app_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../app/pagenotfound/pagenotfound.component */ "./src/app/pagenotfound/pagenotfound.component.ts");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./material/material.module */ "./src/app/material/material.module.ts");
+/* harmony import */ var _opentickets_opentickets_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./opentickets/opentickets.component */ "./src/app/opentickets/opentickets.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _performance_performance_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./performance/performance.component */ "./src/app/performance/performance.component.ts");
+/* harmony import */ var _ticketdetails_ticketdetails_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ticketdetails/ticketdetails.component */ "./src/app/ticketdetails/ticketdetails.component.ts");
+/* harmony import */ var _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./ticketdetailcard/ticketdetailcard.component */ "./src/app/ticketdetailcard/ticketdetailcard.component.ts");
+/* harmony import */ var _chat_chat_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./chat/chat.component */ "./src/app/chat/chat.component.ts");
+/* harmony import */ var _app_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../app/pagenotfound/pagenotfound.component */ "./src/app/pagenotfound/pagenotfound.component.ts");
+/* harmony import */ var _app_filters_filter_pipe__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../app/filters/filter.pipe */ "./src/app/filters/filter.pipe.ts");
+
+
+
 
 
 
@@ -544,21 +550,24 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_6__["NavigationComponent"],
-            _opentickets_opentickets_component__WEBPACK_IMPORTED_MODULE_10__["OpenticketsComponent"],
-            _performance_performance_component__WEBPACK_IMPORTED_MODULE_12__["PerformanceComponent"],
-            _ticketdetails_ticketdetails_component__WEBPACK_IMPORTED_MODULE_13__["TicketdetailsComponent"],
-            _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_14__["TicketdetailcardComponent"],
-            _chat_chat_component__WEBPACK_IMPORTED_MODULE_15__["ChatComponent"],
-            _app_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_16__["PagenotfoundComponent"]
+            _opentickets_opentickets_component__WEBPACK_IMPORTED_MODULE_12__["OpenticketsComponent"],
+            _performance_performance_component__WEBPACK_IMPORTED_MODULE_14__["PerformanceComponent"],
+            _ticketdetails_ticketdetails_component__WEBPACK_IMPORTED_MODULE_15__["TicketdetailsComponent"],
+            _ticketdetailcard_ticketdetailcard_component__WEBPACK_IMPORTED_MODULE_16__["TicketdetailcardComponent"],
+            _chat_chat_component__WEBPACK_IMPORTED_MODULE_17__["ChatComponent"],
+            _app_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_18__["PagenotfoundComponent"],
+            _app_filters_filter_pipe__WEBPACK_IMPORTED_MODULE_19__["FilterPipe"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
             _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_7__["LayoutModule"],
-            _material_material_module__WEBPACK_IMPORTED_MODULE_9__["MaterialModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
-            ng2_charts__WEBPACK_IMPORTED_MODULE_8__["ChartsModule"]
+            _material_material_module__WEBPACK_IMPORTED_MODULE_11__["MaterialModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+            ng2_charts__WEBPACK_IMPORTED_MODULE_8__["ChartsModule"],
+            _angular_material_input__WEBPACK_IMPORTED_MODULE_9__["MatInputModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -607,6 +616,61 @@ ChatComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], ChatComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/filters/filter.pipe.ts":
+/*!****************************************!*\
+  !*** ./src/app/filters/filter.pipe.ts ***!
+  \****************************************/
+/*! exports provided: FilterPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterPipe", function() { return FilterPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FilterPipe = class FilterPipe {
+    transform(items, searchText) {
+        if (!items) {
+            return [];
+        }
+        if (!searchText) {
+            return items;
+        }
+        searchText = searchText.toLowerCase();
+        return items.filter(it => {
+            // console.log(it);
+            // console.log(it.tags);
+            return (it.tags.filter(ele => ele.toLowerCase().includes(searchText)).length > 0 || (it.description).toLowerCase().includes(searchText));
+        });
+    }
+};
+FilterPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'filter'
+    })
+], FilterPipe);
+
+// @Pipe({
+//   name: 'filter'
+// })
+// export class FilterPipe implements PipeTransform {
+//   transform(items: any[], searchText: string): any[] {
+//     if(!items) return [];
+//     if(!searchText) return items;
+// searchText = searchText.toLowerCase();
+// return items.filter( it => {
+//   console.log(it);
+//   console.log(it.tags);
+//       return (it.tags.foreach(ele=>ele.toLowerCase().includes(searchText)));
+//     });
+//    }
+// }
 
 
 /***/ }),
@@ -731,7 +795,7 @@ NavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".opentickets{\n    padding: 30px 5% 30px 5%;\n}\n\n.wrapper{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n    grid-column-gap: 1em;\n    grid-row-gap: 1em;\n    padding: 30px 20px 30px 20px;   \n    text-align: center;\n}\n\n.chips{\n    display: inline-flex;\n}\n\n#ticket-description{\n    text-align: left;\n    padding-left: 30rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3BlbnRpY2tldHMvb3BlbnRpY2tldHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdCQUF3QjtBQUM1Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYiwyREFBMkQ7SUFDM0Qsb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQiw0QkFBNEI7SUFDNUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2QiIsImZpbGUiOiJzcmMvYXBwL29wZW50aWNrZXRzL29wZW50aWNrZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3BlbnRpY2tldHN7XG4gICAgcGFkZGluZzogMzBweCA1JSAzMHB4IDUlO1xufVxuXG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OiBncmlkO1xuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KGF1dG8tZml0LCBtaW5tYXgoMTUwcHgsIDFmcikpO1xuICAgIGdyaWQtY29sdW1uLWdhcDogMWVtO1xuICAgIGdyaWQtcm93LWdhcDogMWVtO1xuICAgIHBhZGRpbmc6IDMwcHggMjBweCAzMHB4IDIwcHg7ICAgXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY2hpcHN7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbiN0aWNrZXQtZGVzY3JpcHRpb257XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDMwcmVtO1xufVxuIl19 */"
+module.exports = ".opentickets{\n    padding: 30px 5% 10px 2%;\n}\n\n.wrapper{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n    grid-column-gap: 1em;\n    grid-row-gap: 1em;\n    padding: 30px 20px 30px 20px;   \n    text-align: center;\n}\n\n.chips{\n    display: inline-flex;\n}\n\n#ticket-description{\n    text-align: left;\n    padding-left: 30rem;\n}\n\n.example-full-width {\n    width: 50%;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3BlbnRpY2tldHMvb3BlbnRpY2tldHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdCQUF3QjtBQUM1Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYiwyREFBMkQ7SUFDM0Qsb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQiw0QkFBNEI7SUFDNUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFVBQVU7RUFDWiIsImZpbGUiOiJzcmMvYXBwL29wZW50aWNrZXRzL29wZW50aWNrZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3BlbnRpY2tldHN7XG4gICAgcGFkZGluZzogMzBweCA1JSAxMHB4IDIlO1xufVxuXG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OiBncmlkO1xuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KGF1dG8tZml0LCBtaW5tYXgoMTUwcHgsIDFmcikpO1xuICAgIGdyaWQtY29sdW1uLWdhcDogMWVtO1xuICAgIGdyaWQtcm93LWdhcDogMWVtO1xuICAgIHBhZGRpbmc6IDMwcHggMjBweCAzMHB4IDIwcHg7ICAgXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY2hpcHN7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbiN0aWNrZXQtZGVzY3JpcHRpb257XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDMwcmVtO1xufVxuXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgICB3aWR0aDogNTAlO1xuICB9Il19 */"
 
 /***/ }),
 
@@ -763,6 +827,8 @@ let OpenticketsComponent = class OpenticketsComponent {
             console.log(res);
             this.responseObject = res;
             this.extractData(this.responseObject);
+        }, (err) => {
+            console.log(err);
         });
     }
     extractData(responseObject) {
@@ -922,6 +988,8 @@ let PerformanceComponent = class PerformanceComponent {
                 this.responseResolved = this.response2[this.result][this.results];
                 this.responseResolved.forEach(ele => {
                     this.queryResolvedCount.push(ele[this.total]);
+                }, (err) => {
+                    console.log(err);
                 });
                 // this.queryResolvedCount = this.responseResolved.map(ele => {
                 //   return ele[this.total];
@@ -930,6 +998,8 @@ let PerformanceComponent = class PerformanceComponent {
             });
             // console.log(this.dates);
             // console.log(this.queryTakenCount);
+        }, (err) => {
+            console.log(err);
         });
     }
 };
@@ -969,10 +1039,10 @@ let PerformanceService = class PerformanceService {
         this.http = http;
     }
     getDetailsTaken() {
-        return this.http.get('http://localhost:8765/ticketservice/tickets/csr/taken');
+        return this.http.get('http://localhost:8080/tickets/csr/taken');
     }
     getDetailsResolved() {
-        return this.http.get('http://localhost:8765/ticketservice/tickets/csr/resolved');
+        return this.http.get('http://localhost:8080/tickets/csr/resolved');
     }
 };
 PerformanceService.ctorParameters = () => [
@@ -1009,17 +1079,24 @@ let TicketService = class TicketService {
         this.http = http;
     }
     getOpenTickets() {
-        return this.http.get('http://localhost:8765/ticketservice/tickets/open');
+        // return this.http.get<Map<string, object>>('http://localhost:8765/ticketservice/tickets/open');
+        return this.http.get('http://localhost:8080/tickets/open');
     }
     changeTicketStatusToEngaged(ticket) {
-        console.log('inside ticket service');
-        return this.http.patch('http://localhost:8765/ticketservice/ticket/status/engage', ticket);
+        // console.log('inside ticket service');
+        return this.http.patch('http://localhost:8080/tickets/status/engage', ticket);
     }
     resolveTicket(ticket) {
-        return this.http.patch('http://localhost:8765/ticketservice/ticket/status/resolved', ticket);
+        return this.http.patch('http://localhost:8080/tickets/status/resolved', ticket);
     }
     callbackMail(ticket) {
-        return this.http.patch('http://localhost:8765/ticketservice/ticket/status/callbackmail', ticket);
+        return this.http.patch('http://localhost:8080/tickets/status/callbackmail', ticket);
+    }
+    getClosedTickets() {
+        return this.http.get('http://localhost:8080/tickets/close');
+    }
+    getEngagedTickets() {
+        return this.http.get('http://localhost:8080/tickets/engaged');
     }
 };
 TicketService.ctorParameters = () => [
@@ -1090,7 +1167,6 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
         });
     }
     resolveTicket(message, action) {
-        // console.log(id);
         this.ticketService.resolveTicket(this.ticket).subscribe(res => {
             this.snackbar.open(message, action, { duration: 4000 });
             console.log(res);
@@ -1226,7 +1302,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ayush/Desktop/helpdesk_project/csr-angular/frontend/csr-ui/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/lakshyajit/workspace/product/practice/api-gateway/helpdesk/csr-angular/frontend/csr-ui/src/main.ts */"./src/main.ts");
 
 
 /***/ })

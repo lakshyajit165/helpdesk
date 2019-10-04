@@ -78,7 +78,7 @@ public class TicketController {
 
     }
 
-    @PatchMapping(path="/ticket/status/engage",  consumes={"application/json"})
+    @PatchMapping(path="/tickets/status/engaged",  consumes={"application/json"})
     public ResponseEntity<HashMap<String, Object>> changeStatustoEngage(@RequestBody TicketStructure ticketStructure){
        // System.out.println("Ticket: " + ticketStructure);
 

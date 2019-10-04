@@ -22,7 +22,7 @@ export class TicketdetailcardComponent implements OnInit {
     private http: HttpClient,
     private ticketService: TicketService,
     private snackbar: MatSnackBar
-  ) { 
+  ) {
     if (this.router.getCurrentNavigation().extras.state !== undefined) {
       this.ticket = this.router.getCurrentNavigation().extras.state.ticket;
       this.updateTicketStatusToEngaged(this.ticket);
@@ -44,25 +44,23 @@ export class TicketdetailcardComponent implements OnInit {
   }
 
   resolveTicket(message: string, action: string) {
-    
-    // console.log(id);
-   
+
     this.ticketService.resolveTicket(this.ticket).subscribe(res => {
       this.snackbar.open(message, action, { duration: 4000 });
       console.log(res);
       this.router.navigate(['/home']);
     });
-    
+
   }
 
   generateCallbackMail(message: string, action: string) {
-   
+
     this.ticketService.callbackMail(this.ticket).subscribe(res => {
       console.log(res);
       this.snackbar.open(message, action, { duration: 4000 });
       this.router.navigate(['/home']);
     });
-    
+
   }
 
 }

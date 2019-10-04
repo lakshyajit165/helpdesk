@@ -598,8 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/ayush/Desktop/helpdesk_project/csr-angular/frontend/csr-ui/node_modules/@angular/material/prebuilt-themes/indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
-module.exports = __webpack_require__(/*! /home/ayush/Desktop/helpdesk_project/csr-angular/frontend/csr-ui/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /home/lakshyajit/workspace/product/practice/api-gateway/helpdesk/csr-angular/frontend/csr-ui/node_modules/@angular/material/prebuilt-themes/indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+module.exports = __webpack_require__(/*! /home/lakshyajit/workspace/product/practice/api-gateway/helpdesk/csr-angular/frontend/csr-ui/src/styles.css */"./src/styles.css");
 
 
 /***/ })

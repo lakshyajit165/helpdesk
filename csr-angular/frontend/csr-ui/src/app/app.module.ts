@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ChartsModule } from 'ng2-charts';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material/material.module';
 import { OpenticketsComponent } from './opentickets/opentickets.component';
@@ -16,6 +18,8 @@ import { TicketdetailsComponent } from './ticketdetails/ticketdetails.component'
 import { TicketdetailcardComponent } from './ticketdetailcard/ticketdetailcard.component';
 import { ChatComponent } from './chat/chat.component';
 import { PagenotfoundComponent } from '../app/pagenotfound/pagenotfound.component';
+import { FilterPipe } from '../app/filters/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { PagenotfoundComponent } from '../app/pagenotfound/pagenotfound.componen
     TicketdetailsComponent,
     TicketdetailcardComponent,
     ChatComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ import { PagenotfoundComponent } from '../app/pagenotfound/pagenotfound.componen
     LayoutModule,
     MaterialModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

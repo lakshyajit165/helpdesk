@@ -85,6 +85,9 @@ export class PerformanceComponent implements OnInit {
 
         this.responseResolved.forEach(ele => {
         this.queryResolvedCount.push(ele[this.total]);
+      },
+      (err) => {
+        console.log(err);
       });
 
         // this.queryResolvedCount = this.responseResolved.map(ele => {
@@ -96,7 +99,11 @@ export class PerformanceComponent implements OnInit {
 
       // console.log(this.dates);
       // console.log(this.queryTakenCount);
-    });
+    },
+    (err) => {
+      console.log(err);
+    }
+    );
   }
 
 
