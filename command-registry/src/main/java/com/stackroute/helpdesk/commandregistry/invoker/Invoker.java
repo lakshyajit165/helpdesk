@@ -37,8 +37,8 @@ public class Invoker {
             parameters = createParameter(command_string[1]);
             paramString = "";
         }
-        String commandexec = "http://localhost:8080/"+command+"?"+parameters;
-//        String commandexec = "http://zuul-api-gateway:8765/command-framework/"+command+"?"+parameters;
+//        String commandexec = "http://localhost:8080/"+command+"?"+parameters;
+        String commandexec = "http://zuul-api-gateway:8765/commandframework/"+command+"?"+parameters;
         try{
             ResponseEntity<Object> responseEntity = restTemplate.getForEntity(commandexec, Object.class);
             HashMap<String,Object> responseEntityBody = (HashMap<String, Object>) responseEntity.getBody();

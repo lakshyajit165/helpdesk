@@ -31,7 +31,7 @@ public class BasicCommands {
         try{
         RestTemplate restTemplate =new RestTemplate();
 //        return (T)restTemplate.getForObject("http://zuul-api-gateway:8765/command-framework/basic-commands",Object.class);
-            HashMap<String, Object> commandListRecieved = (HashMap<String, Object>) restTemplate.getForObject("http://localhost:8080/basic-commands",Object.class);
+            HashMap<String, Object> commandListRecieved = (HashMap<String, Object>) restTemplate.getForObject("http://zuul-api-gateway:8765/commandframework/basic-commands",Object.class);
             commandListRecieved.forEach((keyOfCommandList,valueOfCommandList) -> {
                 if(keyOfCommandList=="result"){
                     HashMap<String,Object> basicCommandList = (HashMap<String,Object>)valueOfCommandList;
