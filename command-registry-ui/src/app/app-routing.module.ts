@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { AppBarComponent } from './app-bar/app-bar.component';
+import { CommandListComponent } from './command-list/command-list.component';
+import { TrackIssueComponent } from './track-issue/track-issue.component';
+import { FormComponent } from './form/form.component';
 
 
 const routes: Routes = [
   { path:  'sidenav', component:  SidenavComponent},
-  { path:  'appbar', component:  AppBarComponent},
-  { path:  '**', component:  SidenavComponent}
+  { path:  'commandlist', component:  CommandListComponent},
+  { path:  'trackissue', component:  TrackIssueComponent},
+  { path:  'form', component:  FormComponent},
+  { path:  '**', component:  CommandListComponent}
 ];
 
 @NgModule({

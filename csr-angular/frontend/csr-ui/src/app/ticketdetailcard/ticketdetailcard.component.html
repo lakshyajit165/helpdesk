@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-header>
+      
+        <mat-card-title>Ticket Details</mat-card-title>
+        
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+        <div class="details">
+            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>
+            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>
+            <h3>User: </h3><p>{{ ticket.usermail }}</p>
+            <h3>Status: </h3><p> {{ status }}</p>
+        
+        <form class="example-form">
+            
+            <mat-form-field class="example-full-width" appearance="outline">
+                <input matInput placeholder="Execute a command">
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="command-button">Execute</button>
+        </form>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="wrapper1">
+            <button mat-stroked-button color="primary">Report User</button>
+            <button mat-stroked-button color="primary" (click)="generateCallbackMail('Ticket Resolved!', 'Dismiss')">Callback</button>
+            <button mat-stroked-button color="primary" (click)="resolveTicket('Ticket Resolved!', 'Dismiss')">Resolved</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
