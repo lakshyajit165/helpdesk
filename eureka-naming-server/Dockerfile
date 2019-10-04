@@ -1,14 +1,8 @@
 FROM maven:3.6-jdk-11 AS build
 COPY pom.xml .
-RUN mvn dependency:go-offline
+RUN mvn:go-offline
 COPY src src
 RUN mvn -f pom.xml clean package
-
-#FROM openjdk:11
-#EXPOSE 8761
-#ADD target/eureka-naming-server-1.0.0.SNAPSHOT.jar eureka-naming-server.jar
-#ENTRYPOINT ["java","-jar","eureka-naming-server.jar"]
-
 
 FROM openjdk:11
 EXPOSE 8081
