@@ -1,0 +1,101 @@
+version: '3'
+
+networks:
+  springcloud-overlay:
+    external:
+      name: springcloud-overlay
+
+services:
+##  spring-boot-csr-service:
+##    image: csr-service
+##    build: csr-service
+###      context: ./
+###      dockerfile: Dockerfile
+##    ports:
+##      - 8080:8080
+##    depends_on:
+##      - mongo
+##    environment:
+##      mongo_url: mongodb://mongo/ticketdb
+##
+##
+##  mongo:
+##    image: mongo:latest
+##    container_name: mongo
+##    environment:
+##      - MONGO_DATA_DIR=/data/ticketdb
+##    ports:
+##      - 27017:27017
+##    volumes:
+##      - $HOME/workspace/productdb/ticketdb:/data/db
+
+  config-server:
+#    image: eureka-naming-server
+    build: congif-server
+    ports:
+      - 8089:8089
+#
+#  eureka-naming-server:
+##    image: eureka-naming-server
+#    build: eureka-naming-server
+#    ports:
+#      - 8761:8761
+#
+#  zuul-api-gateway:
+##    image: zuul-api-gateway
+#    build: zuul-api-gateway
+#    ports:
+#        - 8765:8765
+#    depends_on:
+#      - eureka-naming-server
+#    environment:
+#      - EUREKA_SERVER_ADDRESS=eureka-naming-server
+#    links:
+#      - eureka-naming-server
+#
+#  command-registry-ui:
+##    image: command-registry-ui
+#    build: command-registry-ui
+#    ports:
+#      - 4200:4200
+#    container_name: angularcontainer  # Container name
+#    volumes: # Volume binding
+#      - $HOME/workspace/command-registry-ui:/usr/src/app
+#
+#
+#  spring-boot-command-framework:
+##    image: command-framework
+#    build: command-framework
+#    ports:
+#      - 8080:8080
+##    depends_on:
+##      - zuul-api-gateway
+#
+#  spring-boot-optimus:
+##    image: optimus
+#    build: optimus
+#    ports:
+#      - 8083:8083
+##    depends_on:
+##      - zuul-api-gateway
+#
+#  spring-boot-command-registry:
+##      image: command-registry
+#      build: command-registry
+#      ports:
+#        - 8082:8082
+##      depends_on:
+##        - mongo-command
+###        - zuul-api-gateway
+#      environment:
+#        mongo_url: mongodb://mongo-command/command
+##
+  mongo-command:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_DATA_DIR=/data/command
+    ports:
+      - 27017:27017
+    volumes:
+      - $HOME/workspace/productdb/command:/data/db

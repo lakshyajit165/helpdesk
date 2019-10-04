@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <modelVersion>4.0.0</modelVersion>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <groupId>com.stackroute.helpdesk</groupId>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <artifactId>HelpDesk</artifactId>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <version>1.0.0-SNAPSHOT</version>
+                  
+  
+  
+  
+  
+  
+  
+  <dependencies>
+                                    
+    
+    
+    
+    
+    
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+                                
+  
+  
+  
+  
+  
+  
+  </dependencies>
+                  
+  
+  
+  
+  
+  
+  
+  <packaging>pom</packaging>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <name>HelpDesk</name>
+                         
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <parent>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <groupId>org.springframework.boot</groupId>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.8.RELEASE</version>
+                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </parent>
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <properties>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <maven.compiler.source>1.8</maven.compiler.source>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <maven.compiler.target>1.8</maven.compiler.target>
+                        
+    
+    
+    
+    
+    <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+  </properties>
+                      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <modules>
+                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <module>csr-service</module>
+                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <module>optimus</module>
+                                          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <module>command-registry</module>
+                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    <module>command-framework</module>
+                                  
+    
+    
+    
+    
+    
+    
+    
+    <module>eureka-naming-server</module>
+                              
+    
+    
+    
+    
+    
+    
+    <module>zuul-api-gateway</module>
+                          
+
+      
+    
+     <module>csr-angular</module>
+    
+      <module>csr-service</module>
+    
+    
+    <module>optimus-train</module>
+          
+    
+    <module>congif-server</module>
+      
+  </modules>
+                    
+
+
+
+
+
+
+
+
+
+</project>

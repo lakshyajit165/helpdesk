@@ -1,0 +1,33 @@
+<!-- <p>opentickets works!</p> -->
+
+    <section class="opentickets">
+        <h1 class="display-4" class="body-2 mat-display-1" >List of open Tickets</h1>
+
+        <div *ngFor="let ticket of tickets" class="mat-elevation-z2 wrapper" >
+                
+                <div style="text-align: left">
+                   
+                        <h2 class="mat-body-strong">{{ ticket.description }}</h2>
+                    
+                </div>
+                <div >
+                    <h3 class="mat-body-strong">{{ ticket.timeCreated | date }}</h3>
+                </div>
+               
+                <div >
+                    <mat-chip-list *ngFor="let tag of ticket.tags" class="chips">
+                        <mat-chip>{{ tag }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+
+                 <div>  
+                    <button mat-stroked-button color="primary" (click)="assignMeClicked(ticket)">Assign Me</button>
+                </div>
+                
+                    
+                
+               
+            </div>
+        
+    </section>
+    
