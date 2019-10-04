@@ -31,12 +31,12 @@ export class TicketService {
 
   }
 
-  // getClosedTickets(): Observable<object> {
-  //   return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/closed');
-  // }
+  getClosedTickets(): Observable<object> {
+    return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/closed');
+  }
 
-  // getEngagedTickets(): Observable<object> {
-  //   return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/engaged');
-  // }
+  getEngagedTickets(): Observable<object> {
+    return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/engaged');
+  }
 
 }
