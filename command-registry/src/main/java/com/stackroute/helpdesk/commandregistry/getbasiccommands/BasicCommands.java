@@ -1,21 +1,16 @@
 package com.stackroute.helpdesk.commandregistry.getbasiccommands;
 
-import com.stackroute.helpdesk.commandregistry.Exceptions.CommandAlreadyExistsException;
-import com.stackroute.helpdesk.commandregistry.Exceptions.CommandNotFoundException;
+import com.stackroute.helpdesk.commandregistry.exceptions.CommandNotFoundException;
 import com.stackroute.helpdesk.commandregistry.entity.Commands;
 import com.stackroute.helpdesk.commandregistry.repository.CommandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.UnknownHostException;
 import java.util.*;
 
 @RestController

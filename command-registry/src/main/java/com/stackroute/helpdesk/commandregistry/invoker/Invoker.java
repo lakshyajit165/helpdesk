@@ -1,12 +1,10 @@
 package com.stackroute.helpdesk.commandregistry.invoker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.ribbon.proxy.annotation.Http;
-import com.stackroute.helpdesk.commandregistry.Exceptions.CommandNotFoundException;
-import com.stackroute.helpdesk.commandregistry.Exceptions.ParameterListNotValid;
+import com.stackroute.helpdesk.commandregistry.exceptions.CommandNotFoundException;
+import com.stackroute.helpdesk.commandregistry.exceptions.ParameterListNotValid;
 import com.stackroute.helpdesk.commandregistry.invoker.model.Context;
 import org.json.simple.JSONObject;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @RequestMapping("api/v1/commandregistry")
