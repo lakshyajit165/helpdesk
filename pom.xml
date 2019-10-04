@@ -275,7 +275,8 @@
      <module>csr-angular</module>
     
       <module>csr-service</module>
-    
+
+    <module>command-registry-angular</module>
     
     <module>optimus-train</module>
           

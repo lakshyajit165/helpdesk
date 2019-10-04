@@ -1,18 +1,11 @@
 FROM maven:3.6-jdk-11 AS build
 COPY pom.xml .
-#RUN mvn dependency:go-offline
-COPY /home/ayush/.m2 /root/.m2
+CMD mvn:go-offline
 COPY src src
-RUN mvn -f pom.xml clean package
-
-#FROM openjdk:11
-##EXPOSE 8080
-##ADD target/command-framework-1.0.0.SNAPSHOT.jar command-framework.jar
-##ENTRYPOINT ["java","-jar","command-framework.jar"]
-
+RUN mvn -f pom.xml clean package -DskipTests
 
 
 FROM openjdk:11
-EXPOSE 8081
+EXPOSE 8080
 COPY --from=build /target/command-framework-1.0.0.SNAPSHOT.jar command-framework.jar
-ENTRYPOINT ["java","-jar","intent-command-mapping.jar"]
+ENTRYPOINT ["java","-jar","command-framework.jar"]
