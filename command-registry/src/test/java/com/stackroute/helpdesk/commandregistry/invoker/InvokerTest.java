@@ -1,6 +1,7 @@
 package com.stackroute.helpdesk.commandregistry.invoker;
 
 
+import com.stackroute.helpdesk.commandregistry.invoker.model.Context;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,8 +54,9 @@ public class InvokerTest {
                 .when(restTemplate.getForObject("http://localhost:8080/information", Object.class))
 
                 .thenReturn(new ResponseEntity<HashMap<String,Object>>(responseObject, HttpStatus.OK));
-
-        Object result = restTemplate.getForObject("http://localhost:8080/information", Object.class);
+        ResponseEntity<Object> result = restTemplate.getForEntity("http://localhost:8080/information", Object.class);
+        HashMap<String,Object> responseEntityBody = (HashMap<String, Object>) result.getBody();
+        responseObject.put("context",new Context());
         String expected = result.toString().split(",")[1];
         assertEquals(expected.substring(8),"generic helpdesk");
     }
