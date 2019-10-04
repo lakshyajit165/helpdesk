@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 })
 export class OpenticketsComponent implements OnInit {
 
-  responseObject: Map<string, object>;
-
+  responseObject: object;
+  closeTickets: object[];
+  engagedTickets: object[];
   tickets: object[];
   tags: [];
+
 
   constructor(
     private ticketService: TicketService,
@@ -31,10 +33,13 @@ export class OpenticketsComponent implements OnInit {
       this.extractData(this.responseObject);
 
 
+    },
+    (err) => {
+      console.log(err);
     });
   }
 
-  extractData(responseObject: Map<string, object>) {
+  extractData(responseObject: object) {
     for (const key of Object.keys(responseObject)) {
       if (key === 'result') {
         this.tickets = responseObject[key];

@@ -8,9 +8,9 @@ export interface Ticket {
       timeCreated: string;
       timeResolved: string;
       assignMeTime: string;
-      commandsUsed: string;
+      commandsUsed: string[];
       type: string;
       solvedBy: string;
-      tags: string;
+      tags: string[];
 
 }

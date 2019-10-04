@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PerformanceComponent } from './performance.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PerformanceComponent', () => {
   let component: PerformanceComponent;
@@ -8,7 +10,10 @@ describe('PerformanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PerformanceComponent ]
+      declarations: [ PerformanceComponent, HttpClientTestingModule ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+    ]
     })
     .compileComponents();
   }));
