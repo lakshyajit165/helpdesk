@@ -382,7 +382,7 @@ module.exports = "<!-- <p>performance works!</p> -->\n<div class=\"performance\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>{{ data.title }}</h1>\n<div mat-dialog-content>\n  <p>{{ data.sub }}</p>\n\n  <mat-form-field style=\"width:100%\" *ngIf=\"data.report\">\n    <input matInput [(ngModel)]=\"reportReason\">\n  </mat-form-field>\n  <p *ngIf=\"data.command\"></p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Cancel</button>\n  <button mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Submit</button>\n</div>"
+module.exports = "<h1 mat-dialog-title>{{ data.title }}</h1>\n<div mat-dialog-content>\n  <p>{{ data.sub }}</p>\n\n  <mat-form-field style=\"width:100%\" *ngIf=\"data.report\">\n    <input matInput [(ngModel)]=\"reportReason\">\n  </mat-form-field>\n  <div class=\"response\" *ngIf=\"data.command\">\n    <p> {{ data.response }}</p>\n  </div>\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Close</button>\n  <button *ngIf=\"data.report\" mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Submit</button>\n  <button *ngIf=\"data.command\" mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Send Mail</button>\n\n</div>"
 
 /***/ }),
 
@@ -1127,6 +1127,17 @@ TicketService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/ticketdetailcard/dialog.css":
+/*!*********************************************!*\
+  !*** ./src/app/ticketdetailcard/dialog.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".response{\n    height: 150px;\n    overflow-y: scroll;\n    word-wrap: break-word;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGlja2V0ZGV0YWlsY2FyZC9kaWFsb2cuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksYUFBYTtJQUNiLGtCQUFrQjtJQUNsQixxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC90aWNrZXRkZXRhaWxjYXJkL2RpYWxvZy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucmVzcG9uc2V7XG4gICAgaGVpZ2h0OiAxNTBweDtcbiAgICBvdmVyZmxvdy15OiBzY3JvbGw7XG4gICAgd29yZC13cmFwOiBicmVhay13b3JkO1xufSJdfQ== */"
+
+/***/ }),
+
 /***/ "./src/app/ticketdetailcard/ticketdetailcard.component.css":
 /*!*****************************************************************!*\
   !*** ./src/app/ticketdetailcard/ticketdetailcard.component.css ***!
@@ -1163,7 +1174,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let DialogOverviewExampleDialog = class DialogOverviewExampleDialog {
+let DialogOverviewExampleDialog = 
+// tslint:disable-next-line: component-class-suffix
+class DialogOverviewExampleDialog {
     constructor(dialogRef, data) {
         this.dialogRef = dialogRef;
         this.data = data;
@@ -1178,9 +1191,13 @@ DialogOverviewExampleDialog.ctorParameters = () => [
 ];
 DialogOverviewExampleDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        // tslint:disable-next-line: component-selector
         selector: 'dialog-overview-example-dialog',
         template: __webpack_require__(/*! raw-loader!./reportuserdialog.html */ "./node_modules/raw-loader/index.js!./src/app/ticketdetailcard/reportuserdialog.html"),
-    }),
+        styles: [__webpack_require__(/*! ./dialog.css */ "./src/app/ticketdetailcard/dialog.css")]
+    })
+    // tslint:disable-next-line: component-class-suffix
+    ,
     tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MAT_DIALOG_DATA"]))
 ], DialogOverviewExampleDialog);
 
@@ -1193,6 +1210,8 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
         this.dialog = dialog;
         this.stat = 'status';
         this.result = 'result';
+        this.err = 'error';
+        this.msg = 'message';
         if (this.router.getCurrentNavigation().extras.state !== undefined) {
             this.ticket = this.router.getCurrentNavigation().extras.state.ticket;
             this.updateTicketStatusToEngaged(this.ticket);
@@ -1202,7 +1221,7 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
     ngOnInit() {
     }
     // Open the dialog box
-    openDialog(func) {
+    openDialog(func, res) {
         // console.log(func);
         let dialogRef;
         // if func is report, then report the user else, show the execute command response
@@ -1215,7 +1234,11 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
         else if (func === 'execute') {
             dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
                 width: '400px',
-                data: { title: 'Command Response', sub: 'Following is the response for the command you executed:', command: true }
+                data: { title: 'Command Response',
+                    sub: 'Following is the response for the command you executed:',
+                    command: true,
+                    response: JSON.stringify(res)
+                }
             });
         }
         dialogRef.afterClosed().subscribe(result => {
@@ -1243,11 +1266,15 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
         });
     }
     executeCommand(command) {
-        this.openDialog('execute');
-        // this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`,
-        // {csrUserId: 'adawd'}).subscribe(res => {
-        //   console.log(res);
-        // });
+        this.http.post(`http://localhost:8765/commandregistry/api/v1/commandregistry/execute/${command}`, { csrUserId: 'adawd' }).subscribe(res => {
+            console.log(res);
+            if (res[this.err] === 'true') {
+                this.openDialog('execute', res[this.result][this.msg]);
+            }
+            else {
+                this.openDialog('execute', res[this.result]);
+            }
+        });
     }
 };
 TicketdetailcardComponent.ctorParameters = () => [

@@ -1,0 +1,92 @@
+ /* .example-container {
+     /* display: flex;
+    flex-direction: column;  */
+<<<<<<< HEAD
+    /* border: black;
+=======
+ /* border: black;
+>>>>>>> c1e4967e709eb6f55bf551ed0a41cc0219e96a69
+    margin-left: 10px;
+  
+  }
+  
+<<<<<<< HEAD
+=======
+  
+>>>>>>> c1e4967e709eb6f55bf551ed0a41cc0219e96a69
+  .example-container > * {
+    width: 100%;
+  } 
+   /* .parameter-container{
+    width: 100px;
+    height: 100px;
+  }  */
+ 
+<<<<<<< HEAD
+  .submit-button
+  {
+    
+    float:right;
+    margin-left: 10px;
+    margin-right: 10px;
+  
+  }
+  .cancel-button{
+    float:right;
+    margin-left: 10px;
+    margin-right: 10px;
+  } 
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  .formAdd{
+    /* display: flex;
+    flex-direction: column; */
+    margin-left: 10px;
+  }
+  .formAdd > *{
+    width: 100%;
+  }
+   .container-fluid
+  {
+    padding-bottom: 10%;
+  }
+=======
+ .container-fluid {
+     padding-bottom: 10%;
+ }
+ 
+ .submit-button {
+     float: right;
+     margin-left: 10px;
+     margin-right: 10px;
+ }
+ 
+ .cancel-button {
+     float: right;
+     margin-left: 10px;
+     margin-right: 10px;
+ }
+ 
+ .example-full-width {
+     width: 100%;
+ }
+ 
+ .formAdd {
+     /* display: flex;
+    flex-direction: column; */
+     margin-left: 10px;
+     margin-bottom: 10px;
+     margin-top: 10px;
+ }
+ 
+ .formAdd>* {
+     width: 100%;
+ }
+ 
+ .container-fluid {
+     padding-bottom: 10%;
+ }
+>>>>>>> c1e4967e709eb6f55bf551ed0a41cc0219e96a69

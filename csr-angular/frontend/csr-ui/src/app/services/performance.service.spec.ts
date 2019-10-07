@@ -1,7 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 
 import { PerformanceService } from './performance.service';
-import { HttpClientModule } from '@angular/common/http';
+
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PerformanceService', () => {
@@ -55,7 +55,7 @@ describe('PerformanceService', () => {
       expect(res).toEqual(dummyResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/csr/taken');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/csr/taken');
     expect(req.request.method).toBe('GET');
     req.flush(dummyResponse);
   });
@@ -67,7 +67,7 @@ describe('PerformanceService', () => {
       expect(res).toEqual(dummyResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/csr/resolved');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/csr/resolved');
     expect(req.request.method).toBe('GET');
     req.flush(dummyResponse);
   });

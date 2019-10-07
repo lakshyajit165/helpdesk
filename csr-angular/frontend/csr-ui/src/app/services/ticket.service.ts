@@ -32,11 +32,11 @@ export class TicketService {
   }
 
   getClosedTickets(): Observable<object> {
-    return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/closed');
+    return this.http.get<Map<string, object>>('http://localhost:8765/ticketservice/tickets/closed');
   }
 
   getEngagedTickets(): Observable<object> {
-    return this.http.get<Map<string, object>>('http://localhost:8765/ticket-service/tickets/engaged');
+    return this.http.get<Map<string, object>>('http://localhost:8765/ticketservice/tickets/engaged');
   }
 
 }

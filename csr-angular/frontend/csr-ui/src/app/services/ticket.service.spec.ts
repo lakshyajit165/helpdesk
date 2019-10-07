@@ -73,7 +73,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicketStatusResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/open');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/open');
     expect(req.request.method).toBe('GET');
     req.flush(dummyTicketStatusResponse);
   });
@@ -85,7 +85,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicket);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/status/engage');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/status/engaged');
     expect(req.request.method).toBe('PATCH');
     req.flush(dummyTicket);
   });
@@ -97,7 +97,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicket);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/status/resolved');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/status/resolved');
     expect(req.request.method).toBe('PATCH');
     req.flush(dummyTicket);
   });
@@ -109,7 +109,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicket);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/status/callbackmail');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/status/callbackmail');
     expect(req.request.method).toBe('PATCH');
     req.flush(dummyTicket);
   });
@@ -122,7 +122,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicketStatusResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/close');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/closed');
     expect(req.request.method).toBe('GET');
     req.flush(dummyTicketStatusResponse);
   });
@@ -134,7 +134,7 @@ describe('TicketService', () => {
       expect(res).toEqual(dummyTicketStatusResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:8080/tickets/engaged');
+    const req = httpMock.expectOne('http://localhost:8765/ticketservice/tickets/engaged');
     expect(req.request.method).toBe('GET');
     req.flush(dummyTicketStatusResponse);
   });

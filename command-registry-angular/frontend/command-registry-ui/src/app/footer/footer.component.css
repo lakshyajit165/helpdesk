@@ -1,0 +1,17 @@
+.footer {
+<<<<<<< HEAD
+    position: fixed;
+    bottom:0%;
+}
+
+.footer span {
+    margin:0 auto;
+=======
+    position: absolute;
+    bottom: 0%;
+}
+
+.footer span {
+    margin: 0 auto;
+>>>>>>> c1e4967e709eb6f55bf551ed0a41cc0219e96a69
+}

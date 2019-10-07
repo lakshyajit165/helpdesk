@@ -11,9 +11,12 @@ export interface DialogData {
 }
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'reportuserdialog.html',
+  styleUrls: ['./dialog.css']
 })
+// tslint:disable-next-line: component-class-suffix
 export class DialogOverviewExampleDialog {
 
   private reportReason;
@@ -42,6 +45,8 @@ export class TicketdetailcardComponent implements OnInit {
   private stat = 'status';
   private result = 'result';
   private command: string;
+  private err = 'error';
+  private msg = 'message';
 
   constructor(
     private router: Router,
@@ -74,7 +79,11 @@ export class TicketdetailcardComponent implements OnInit {
     } else if (func === 'execute') {
       dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '400px',
-       data: { title: 'Command Response', sub: 'Following is the response for the command you executed:', command: true, response: res }
+       data: { title: 'Command Response',
+                sub: 'Following is the response for the command you executed:',
+                command: true,
+                response: JSON.stringify(res)
+              }
       });
     }
 
@@ -115,12 +124,17 @@ export class TicketdetailcardComponent implements OnInit {
   }
 
   executeCommand(command: string) {
-    this.openDialog('execute');
-    // this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`,
-    // {csrUserId: 'adawd'}).subscribe(res => {
-    //   console.log(res);
 
-    // });
+    this.http.post(`http://localhost:8765/commandregistry/api/v1/commandregistry/execute/${command}`,
+    {csrUserId: 'adawd'}).subscribe(res => {
+      console.log(res);
+      if (res[this.err] === 'true') {
+        this.openDialog('execute', res[this.result][this.msg]);
+      } else {
+        this.openDialog('execute', res[this.result]);
+      }
+
+    });
   }
 
 }
