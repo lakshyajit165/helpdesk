@@ -48,16 +48,23 @@ services:
 
 
   spring-boot-command-registry:
-      image: helpdesk_project_spring-boot-command-framework
-      build: command-registry
-      ports:
-        - 8082:8082
-      depends_on:
-        - mongo-command
-        - eureka-naming-server
-      environment:
-        mongo_url: mongodb://mongo-command/command
+    image: helpdesk_project_spring-boot-command-framework
+    build: command-registry
+    ports:
+      - 8082:8082
+    depends_on:
+      - mongo-command
+      - eureka-naming-server
+    environment:
+      mongo_url: mongodb://mongo-command/command
 
+  csr-service:
+    image: csr-service
+    build: csr-service
+    ports:
+      - 8182:8182
+    depends_on:
+      - mongo-command
 
   mongo-command:
     image: mongo:latest

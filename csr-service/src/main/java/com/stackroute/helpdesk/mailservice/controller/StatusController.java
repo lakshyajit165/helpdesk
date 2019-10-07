@@ -1,4 +1,5 @@
 package com.stackroute.helpdesk.mailservice.controller;
+
 import com.stackroute.helpdesk.mailservice.mailstructure.MailStructure;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import com.stackroute.helpdesk.ticketservice.entity.Response;

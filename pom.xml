@@ -225,32 +225,7 @@
     
     
     
-    
-    
-    
-    
-    <module>optimus</module>
-                                          
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <module>command-registry</module>
-                                      
-    
-    
-    
-    
-    
-    
-    
-    
-    <module>command-framework</module>
+
                                   
     
     
@@ -276,12 +251,7 @@
     
       <module>csr-service</module>
 
-    <module>command-registry-angular</module>
-    
-    <module>optimus-train</module>
-          
-    
-    <module>congif-server</module>
+
       
   </modules>
                     

@@ -14,4 +14,10 @@ public interface TicketRepository extends MongoRepository<TicketStructure, Strin
 
     @Query("{ 'status': 'open', 'type': 'query'}")
     public List<TicketStructure> getOpenTickets();
+
+    @Query("{ 'status': 'closed', 'type': 'query'}")
+    public List<TicketStructure> getClosedTickets();
+
+    @Query("{ 'status': 'engaged', 'type': 'query'}")
+    public List<TicketStructure> getEngagedTickets();
 }

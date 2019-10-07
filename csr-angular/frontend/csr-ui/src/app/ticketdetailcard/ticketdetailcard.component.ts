@@ -42,7 +42,7 @@ export class TicketdetailcardComponent implements OnInit {
   private stat = 'status';
   private result = 'result';
   private command: string;
-  
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -62,11 +62,21 @@ export class TicketdetailcardComponent implements OnInit {
   }
 
   // Open the dialog box
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '400px',
-     // data: {name: this.name, animal: this.animal}
-    });
+  openDialog(func: string, res: object): void {
+    // console.log(func);
+    let dialogRef;
+    // if func is report, then report the user else, show the execute command response
+    if (func === 'report') {
+      dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        width: '400px',
+       data: { title: 'Report User', sub: 'Why you are reporting this user?', report: true }
+      });
+    } else if (func === 'execute') {
+      dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        width: '400px',
+       data: { title: 'Command Response', sub: 'Following is the response for the command you executed:', command: true, response: res }
+      });
+    }
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -105,10 +115,12 @@ export class TicketdetailcardComponent implements OnInit {
   }
 
   executeCommand(command: string) {
-    this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`,
-    {"csrUserId": "adawd"}).subscribe(res => {
-      console.log(res);
-    });
+    this.openDialog('execute');
+    // this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`,
+    // {csrUserId: 'adawd'}).subscribe(res => {
+    //   console.log(res);
+
+    // });
   }
 
 }

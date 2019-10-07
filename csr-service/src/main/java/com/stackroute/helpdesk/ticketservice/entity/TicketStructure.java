@@ -28,6 +28,7 @@ public class TicketStructure {
     private String type;
     private String solvedBy;
     private List<String> tags;
+    //public String intent;
 
     public TicketStructure(String description, String usermail, String status, int rating, Date timeCreated, Date timeResolved, Date assignMeTime, List<String> commandsUsed, String type, String solvedBy, List<String> tags) {
         this.description = description;

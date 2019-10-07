@@ -35,6 +35,32 @@ public class TicketService implements TicketInterface{
     }
 
     @Override
+    public List<TicketStructure> getClosedTickets() throws TicketNotFoundException {
+
+        List<TicketStructure> closedTickets = ticketRepository.getClosedTickets();
+
+        if(closedTickets.size() == 0){
+            throw new TicketNotFoundException("No open tickets for now!");
+        }else{
+            return closedTickets;
+        }
+
+    }
+
+    @Override
+    public List<TicketStructure> getEngagedTickets() throws TicketNotFoundException {
+
+        List<TicketStructure> engagedTickets = ticketRepository.getEngagedTickets();
+
+        if(engagedTickets.size() == 0){
+            throw new TicketNotFoundException("No open tickets for now!");
+        }else{
+            return engagedTickets;
+        }
+
+    }
+
+    @Override
     public Optional<TicketStructure> getTicketById(String id){
         return ticketRepository.findById(id);
     }

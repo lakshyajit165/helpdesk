@@ -21,5 +21,9 @@
 }
 
 .example-full-width {
-    width: 50%;
+    width: 100%;
   }
+
+mat-form-field{
+    width: 100%;
+}

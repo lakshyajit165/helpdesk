@@ -349,7 +349,7 @@ module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-si
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <p>opentickets works!</p> -->\n\n        <section class=\"opentickets\">\n        <h1 class=\"display-4\" class=\"body-2 mat-display-1\" >List of open Tickets</h1>  \n        \n        <form>\n        <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n        <input matInput [(ngModel)]=\"searchText\" id=\"search\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"search here........\">\n        </mat-form-field>\n        </form>\n        <div *ngFor=\"let ticket of tickets | filter : searchText\" class=\"mat-elevation-z2 wrapper\" >\n                \n        <div style=\"text-align: left\">\n                   \n        <h2 class=\"mat-body-strong\">{{ ticket.description }}</h2>\n                    \n        </div>\n        <div >\n        <h3 class=\"mat-body-strong\">{{ ticket.timeCreated | date }}</h3>\n        </div>\n               \n        <div >\n         <mat-chip-list *ngFor=\"let tag of ticket.tags\" class=\"chips\">\n         <mat-chip>{{ tag }}</mat-chip>\n        </mat-chip-list>\n        </div>\n\n        <div>  \n        <button mat-stroked-button color=\"primary\" (click)=\"assignMeClicked(ticket)\">Assign Me</button>\n        </div>\n                 \n       </div>\n        \n       </section>\n    "
+module.exports = "<!-- <p>opentickets works!</p> -->\n\n        <section class=\"opentickets\">\n        <h1 class=\"display-4\" class=\"body-2 mat-display-1\" >List of open Tickets</h1>  \n        \n        <form>\n        <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n        <input matInput [(ngModel)]=\"searchText\" id=\"search\" [ngModelOptions]=\"{standalone: true}\" placeholder=\"Search Tickets\">\n        <i matSuffix class=\"material-icons\">\n                search\n        </i>\n        </mat-form-field>\n        </form>\n        <div *ngFor=\"let ticket of tickets | filter : searchText\" class=\"mat-elevation-z2 wrapper\" >\n                \n        <div style=\"text-align: left\">\n                   \n        <h2 class=\"mat-body-strong\">{{ ticket.description }}</h2>\n                    \n        </div>\n        <div >\n        <h3 class=\"mat-body-strong\">{{ ticket.timeCreated | date }}</h3>\n        </div>\n               \n        <div >\n         <mat-chip-list *ngFor=\"let tag of ticket.tags\" class=\"chips\">\n         <mat-chip>{{ tag }}</mat-chip>\n        </mat-chip-list>\n        </div>\n\n        <div>  \n        <button mat-stroked-button color=\"primary\" (click)=\"assignMeClicked(ticket)\">Assign Me</button>\n        </div>\n                 \n       </div>\n        \n       </section>\n    "
 
 /***/ }),
 
@@ -382,7 +382,7 @@ module.exports = "<!-- <p>performance works!</p> -->\n<div class=\"performance\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>Report User</h1>\n<div mat-dialog-content>\n  <p>Why are you reporting this user?</p>\n  <mat-form-field>\n    <input matInput [(ngModel)]=\"reportReason\">\n  </mat-form-field>\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Cancel</button>\n  <button mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Submit</button>\n</div>"
+module.exports = "<h1 mat-dialog-title>{{ data.title }}</h1>\n<div mat-dialog-content>\n  <p>{{ data.sub }}</p>\n\n  <mat-form-field style=\"width:100%\" *ngIf=\"data.report\">\n    <input matInput [(ngModel)]=\"reportReason\">\n  </mat-form-field>\n  <p *ngIf=\"data.command\"></p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Cancel</button>\n  <button mat-button [mat-dialog-close]=\"reportReason\" cdkFocusInitial>Submit</button>\n</div>"
 
 /***/ }),
 
@@ -393,7 +393,7 @@ module.exports = "<h1 mat-dialog-title>Report User</h1>\n<div mat-dialog-content
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\" [(ngModel)]=\"command\" name=\"commandname\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\" (click)=\"executeCommand(command)\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\" (click)=\"openDialog()\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Callback initiated!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
+module.exports = "<mat-card>\n    <mat-card-header>\n      \n        <mat-card-title>Ticket Details</mat-card-title>\n        \n    </mat-card-header>\n    <hr>\n    <mat-card-content>\n        <div class=\"details\">\n            <h3>Ticket Id: </h3> <p>{{ ticket.id }}</p>\n            <h3>Ticket Query: </h3> <p>{{ ticket.description }}</p>\n            <h3>User: </h3><p>{{ ticket.usermail }}</p>\n            <h3>Status: </h3><p> {{ status }}</p>\n        \n        <form class=\"example-form\">\n            \n            <mat-form-field class=\"example-full-width\" appearance=\"outline\">\n                <input matInput placeholder=\"Execute a command\" [(ngModel)]=\"command\" name=\"commandname\">\n            </mat-form-field>\n            <button mat-raised-button color=\"primary\" class=\"command-button\" (click)=\"executeCommand(command)\">Execute</button>\n        </form>\n        </div>\n    </mat-card-content>\n    <mat-card-actions>\n        <div class=\"wrapper1\">\n            <button mat-stroked-button color=\"primary\" (click)=\"openDialog('report')\">Report User</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"generateCallbackMail('Callback initiated!', 'Dismiss')\">Callback</button>\n            <button mat-stroked-button color=\"primary\" (click)=\"resolveTicket('Ticket Resolved!', 'Dismiss')\">Resolved</button>\n        </div>\n    </mat-card-actions>\n</mat-card>"
 
 /***/ }),
 
@@ -810,7 +810,7 @@ NavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".opentickets{\n    padding: 30px 5% 10px 2%;\n}\n\n.wrapper{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n    grid-column-gap: 1em;\n    grid-row-gap: 1em;\n    padding: 30px 20px 30px 20px;   \n    text-align: center;\n}\n\n.chips{\n    display: inline-flex;\n}\n\n#ticket-description{\n    text-align: left;\n    padding-left: 30rem;\n}\n\n.example-full-width {\n    width: 50%;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3BlbnRpY2tldHMvb3BlbnRpY2tldHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdCQUF3QjtBQUM1Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYiwyREFBMkQ7SUFDM0Qsb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQiw0QkFBNEI7SUFDNUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFVBQVU7RUFDWiIsImZpbGUiOiJzcmMvYXBwL29wZW50aWNrZXRzL29wZW50aWNrZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3BlbnRpY2tldHN7XG4gICAgcGFkZGluZzogMzBweCA1JSAxMHB4IDIlO1xufVxuXG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OiBncmlkO1xuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KGF1dG8tZml0LCBtaW5tYXgoMTUwcHgsIDFmcikpO1xuICAgIGdyaWQtY29sdW1uLWdhcDogMWVtO1xuICAgIGdyaWQtcm93LWdhcDogMWVtO1xuICAgIHBhZGRpbmc6IDMwcHggMjBweCAzMHB4IDIwcHg7ICAgXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY2hpcHN7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbiN0aWNrZXQtZGVzY3JpcHRpb257XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDMwcmVtO1xufVxuXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgICB3aWR0aDogNTAlO1xuICB9Il19 */"
+module.exports = ".opentickets{\n    padding: 30px 5% 10px 2%;\n}\n\n.wrapper{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n    grid-column-gap: 1em;\n    grid-row-gap: 1em;\n    padding: 30px 20px 30px 20px;   \n    text-align: center;\n}\n\n.chips{\n    display: inline-flex;\n}\n\n#ticket-description{\n    text-align: left;\n    padding-left: 30rem;\n}\n\n.example-full-width {\n    width: 100%;\n  }\n\nmat-form-field{\n    width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3BlbnRpY2tldHMvb3BlbnRpY2tldHMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdCQUF3QjtBQUM1Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYiwyREFBMkQ7SUFDM0Qsb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQiw0QkFBNEI7SUFDNUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFdBQVc7RUFDYjs7QUFFRjtJQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJzcmMvYXBwL29wZW50aWNrZXRzL29wZW50aWNrZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3BlbnRpY2tldHN7XG4gICAgcGFkZGluZzogMzBweCA1JSAxMHB4IDIlO1xufVxuXG4ud3JhcHBlcntcbiAgICBkaXNwbGF5OiBncmlkO1xuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KGF1dG8tZml0LCBtaW5tYXgoMTUwcHgsIDFmcikpO1xuICAgIGdyaWQtY29sdW1uLWdhcDogMWVtO1xuICAgIGdyaWQtcm93LWdhcDogMWVtO1xuICAgIHBhZGRpbmc6IDMwcHggMjBweCAzMHB4IDIwcHg7ICAgXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY2hpcHN7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG59XG5cbiN0aWNrZXQtZGVzY3JpcHRpb257XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDMwcmVtO1xufVxuXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgfVxuXG5tYXQtZm9ybS1maWVsZHtcbiAgICB3aWR0aDogMTAwJTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1107,6 +1107,12 @@ let TicketService = class TicketService {
     callbackMail(ticket) {
         return this.http.patch('http://localhost:8765/ticketservice/tickets/status/callbackmail', ticket);
     }
+    getClosedTickets() {
+        return this.http.get('http://localhost:8765/ticket-service/tickets/closed');
+    }
+    getEngagedTickets() {
+        return this.http.get('http://localhost:8765/ticket-service/tickets/engaged');
+    }
 };
 TicketService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -1196,10 +1202,22 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
     ngOnInit() {
     }
     // Open the dialog box
-    openDialog() {
-        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-            width: '400px',
-        });
+    openDialog(func) {
+        // console.log(func);
+        let dialogRef;
+        // if func is report, then report the user else, show the execute command response
+        if (func === 'report') {
+            dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+                width: '400px',
+                data: { title: 'Report User', sub: 'Why you are reporting this user?', report: true }
+            });
+        }
+        else if (func === 'execute') {
+            dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+                width: '400px',
+                data: { title: 'Command Response', sub: 'Following is the response for the command you executed:', command: true }
+            });
+        }
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
             console.log(result);
@@ -1225,9 +1243,11 @@ let TicketdetailcardComponent = class TicketdetailcardComponent {
         });
     }
     executeCommand(command) {
-        this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`, { "csrUserId": "adawd" }).subscribe(res => {
-            console.log(res);
-        });
+        this.openDialog('execute');
+        // this.http.post(`http://localhost:8765/command-registry/api/v1/commandregistry/execute/${command}`,
+        // {csrUserId: 'adawd'}).subscribe(res => {
+        //   console.log(res);
+        // });
     }
 };
 TicketdetailcardComponent.ctorParameters = () => [

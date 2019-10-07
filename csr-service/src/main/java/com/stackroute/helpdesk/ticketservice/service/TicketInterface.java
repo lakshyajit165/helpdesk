@@ -16,4 +16,9 @@ public interface TicketInterface {
     public List<TicketStructure> getTickets();
 
     public List<TicketStructure> getOpenTickets() throws TicketNotFoundException;
+
+    public List<TicketStructure> getClosedTickets() throws TicketNotFoundException;
+
+    public List<TicketStructure> getEngagedTickets() throws TicketNotFoundException;
+
 }

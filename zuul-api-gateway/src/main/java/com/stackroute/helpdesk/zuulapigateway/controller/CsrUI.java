@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CsrUI {
 
-    @GetMapping("/csrui")
+    @GetMapping("/")
     public String redirectToCsrUi(){
         return "forward:csr-angular";
     }

@@ -5,7 +5,10 @@
         
         <form>
         <mat-form-field class="example-full-width" appearance="outline">
-        <input matInput [(ngModel)]="searchText" id="search" [ngModelOptions]="{standalone: true}" placeholder="search here........">
+        <input matInput [(ngModel)]="searchText" id="search" [ngModelOptions]="{standalone: true}" placeholder="Search Tickets">
+        <i matSuffix class="material-icons">
+                search
+        </i>
         </mat-form-field>
         </form>
         <div *ngFor="let ticket of tickets | filter : searchText" class="mat-elevation-z2 wrapper" >

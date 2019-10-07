@@ -28,11 +28,11 @@ public class PerformanceService implements PerformanceInterface{
     }
 
     public JSONObject noOfQueryTaken(){
-      //  List<String> data = new ArrayList<>();
-//        data.add("open");
-//        data.add("closed");
+        List<String> data = new ArrayList<>();
+        data.add("open");
+        data.add("closed");
         GroupOperation groupOperation = group("assignMeTime").count().as("total");
-        MatchOperation filterState =  match((Criteria.where("solvedBy").in("csr1@gmail.com").exists(true)));
+        MatchOperation filterState =  match((Criteria.where("solvedBy").in("csr1@gmail.com").exists(true)).andOperator(Criteria.where("status").in(data)));
         Aggregation aggregation = newAggregation(filterState,
                 groupOperation,project("total").and("_id").as("timestamp").andExclude("_id"));
         //System.out.println("***********" + aggregation);

@@ -7,6 +7,6 @@ RUN mvn -f pom.xml clean package
 
 
 FROM openjdk:11
-EXPOSE 8083
+EXPOSE 8084
 COPY --from=build /target/csr-angular-1.0.0.SNAPSHOT.jar csr-angular.jar
 ENTRYPOINT ["java","-jar","eureka-naming-server.jar"]
